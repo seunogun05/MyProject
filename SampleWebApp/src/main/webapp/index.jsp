@@ -4,6 +4,7 @@
   <h3> A new line added by Seun</h3>
   
   <p>This is John paraing.</p>
-  <p> I am CALMING him down</p>  
+  <p> I am CALMING him down</p>
+  <p> Let's test auto refresh</p>
 </body>
 </html>
