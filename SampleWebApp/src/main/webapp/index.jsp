@@ -8,5 +8,6 @@
   <p> Let's test auto refresh</p>
   <p> Line added on Sunday at Sacramento</p>
   <p> Line added to test continous integration</p>
+  <p> Testing new pipeline</p>
 </body>
 </html>
