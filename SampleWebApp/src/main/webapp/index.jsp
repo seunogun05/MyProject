@@ -7,5 +7,6 @@
   <p> I am CALMING him down</p>
   <p> Let's test auto refresh</p>
   <p> Line added on Sunday at Sacramento</p>
+  <p> Line added to test continous integration</p>
 </body>
 </html>
