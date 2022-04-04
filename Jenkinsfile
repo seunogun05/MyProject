@@ -7,6 +7,13 @@ pipeline {
                 git 'https://github.com/seunogun05/MyProject.git'
             }
         }
+        stage("SonarQube analysis") {
+            steps {
+              withSonarQubeEnv('sonar') {
+                sh 'mvn -f SampleWebApp/pom.xml clean package sonar:sonar'
+              }
+            }
+          }
         stage('Test') {
             steps {
                 sh 'cd SampleWebApp && mvn test'
@@ -22,12 +29,5 @@ pipeline {
                 deploy adapters: [tomcat9(credentialsId: 'devops', path: '', url: 'http://52.55.160.164:8080')], contextPath: 'pipeline', war: ' **/*.war'
             }
         }
-        stage("SonarQube analysis") {​​
-            steps {​​​​​​​​​
-              withSonarQubeEnv('sonar') {​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-                sh 'mvn -f SampleWebApp/pom.xml clean package sonar:sonar'
-              }​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-            }​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-          }​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
     }
 }
